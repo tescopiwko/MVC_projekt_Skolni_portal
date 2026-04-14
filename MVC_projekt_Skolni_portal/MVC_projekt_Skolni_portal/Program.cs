@@ -19,6 +19,7 @@ namespace MVC_projekt_Skolni_portal
                 app.UseHsts();
             }
 
+
             app.UseHttpsRedirection();
             app.UseRouting();
 
