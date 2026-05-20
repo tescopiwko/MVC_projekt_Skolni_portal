@@ -4,30 +4,28 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]</title>
-    <script type="importmap"></script>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/MVC_projekt_Skolni_portal.styles.css" asp-append-version="true" />
-    <title>@ViewData["titulek"]</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" /> <!-- Bootstrap CSS framework - dává aplikaci základní styling, komponenty a responsivní layout -->
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />  <!-- Vlastní CSS pro celou aplikaci - zde jsou vaše globální styly (asp-append-version zabrání cachování starého CSS) -->
+    <link rel="stylesheet" href="~/MVC_projekt_Skolni_portal.styles.css" asp-append-version="true" />  <!-- CSS specifické pro tento projekt - přepíše či doplní Bootstrap a site.css (taky s verzingem pro cache) -->
 </head>
 <body>
-    <h1 class="@ViewData["NadpisClass"]">
-        @ViewData["Title"]
+    <h1 class="@ViewData["NadpisClass"]"> <!-- Definuje se v wwwroot\css\site.css - v podstate styl nadpisu -->
+        @ViewData["Title"] <!-- Nadpis stranky ktery se lisi podle obsahu, definuje se ve VIEWS souborech-->
     </h1>
-    <header class="hlavicka">
-            <nav class="menu">
-            <a asp-controller="Home" asp-action="Index">Domů</a>
-                <div class="loginmenu">
-                    <a asp-controller="User" asp-action="Prihlaseni">Přihlaš se</a>
-                </div>
+    <header class="hlavicka"> <!-- .hlavicka => wwwroot\css\site.css -->
+        <nav class="menu"> <!-- .menu => wwwroot\css\site.css -->
+            <a href="/Home/Index">Domů</a> <!-- klasicky HTML syntax, prehlednejsi nez "asp-..." -->
+            <div class="loginmenu"> <!-- .loginmenu => wwwroot\css\site.css -->
+                <a href="/User/Prihlaseni">Přihlaš se</a>
+            </div>
 
-            </nav>
+        </nav>
     </header>
     <main>
         @RenderBody()
     </main>
     <footer>
-        <hr />
+        <hr /> <!-- hr => wwwroot\css\site.css -->
         <p>&copy; Tým 2026</p>
     </footer>
 </body>

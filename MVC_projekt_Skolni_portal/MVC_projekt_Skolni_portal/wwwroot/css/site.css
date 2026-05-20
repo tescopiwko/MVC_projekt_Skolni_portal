@@ -47,3 +47,10 @@ hr {
         .loginmenu a:hover {
             border-bottom: 2px solid darkblue;
         }
+
+/* Testovni ViewData["NadpisClass"] v Index.cshtml*/
+.velky-nadpis {
+    font-size: 48px;
+    color: red;
+    font-weight: bold;
+}
