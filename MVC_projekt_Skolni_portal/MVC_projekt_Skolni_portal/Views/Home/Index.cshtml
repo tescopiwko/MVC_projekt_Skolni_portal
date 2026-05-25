@@ -1,6 +1,80 @@
 ﻿@{
     ViewData["Title"] = "SPŠ Trutnov";
-    ViewData["NadpisClass"] = "velky-nadpis"; // testovani stylu nadpisu JEN V SOUBORU LAYOUT
+    ViewData["NadpisClass"] = "velky-nadpis";
 }
+
+<div class="uvodni-banner">
+    <h1 class="uvodni-nadpis">Vítejte na školním portálu</h1>
+    <p class="uvodni-podnadpis">Moderní vzdělání, přátelská atmosféra a úspěšní absolventi.</p>
+    <button class="tlacitko-zjistit-vice">Zjistit více</button>
+</div>
+
+<hr class="oddeleni-sekci" />
+
+<section class="sekce-o-skole sekce-seda">
+    <h2 class="nadpis-sekce"><span class="sekce-ikona">🏫</span> O škole</h2>
+    <p class="text-o-skole">
+        Střední průmyslová škola Trutnov nabízí moderní vzdělání v technických i přírodovědných oborech. Naši absolventi jsou úspěšní v praxi i dalším studiu.<br>
+        Škola je vybavena moderními laboratořemi, počítačovými učebnami a sportovišti. Studenti mají možnost účastnit se odborných soutěží, zahraničních stáží i mimoškolních aktivit.<br>
+        Důraz klademe na individuální přístup, rozvoj talentu a přípravu na budoucí povolání nebo studium na vysoké škole.
+    </p>
+</section>
+
+<section class="sekce-obory">
+    <h2 class="nadpis-sekce"><span class="sekce-ikona">💡</span> Studijní obory</h2>
+    <ul class="seznam-oboru">
+        <li>Informační technologie</li>
+        <li>Strojírenství</li>
+        <li>Elektrotechnika</li>
+        <li>Technické lyceum</li>
+    </ul>
+</section>
+
+<hr class="oddeleni-sekci" />
+
+<section class="sekce-novinky sekce-seda">
+    <h2 class="nadpis-sekce"><span class="sekce-ikona">📰</span> Novinky</h2>
+    <div class="novinky-karty">
+        <div class="karta-novinka">
+            <h3>Den otevřených dveří</h3>
+            <p>Přijďte se podívat do naší školy 15. 3. 2024 od 9:00 do 16:00.</p>
+        </div>
+        <div class="karta-novinka">
+            <h3>Úspěch v soutěži</h3>
+            <p>Náš tým obsadil 1. místo v krajském kole soutěže v programování!</p>
+        </div>
+        <div class="karta-novinka">
+            <h3>Nová laboratoř</h3>
+            <p>Otevíráme moderní laboratoř pro výuku robotiky a automatizace.</p>
+        </div>
+    </div>
+</section>
+
+<section class="sekce-fotogalerie">
+    <h2 class="nadpis-sekce"><span class="sekce-ikona">📸</span> Fotogalerie</h2>
+    <div class="fotogalerie">
+        <img src="~/obrazky/horska-59.jpg" alt="Škola 1" class="foto-nahled" />
+        <img src="~/obrazky/horska-618.jpg" alt="Škola 2" class="foto-nahled" />
+        <img src="~/obrazky/mlade-buky-5-6.jpg" alt="Škola 3" class="foto-nahled" />
+        <img src="~/obrazky/skolni-101.jpg" alt="Škola 4" class="foto-nahled" />
+    </div>
+</section>
+
+<section class="sekce-reference sekce-seda">
+    <h2 class="nadpis-sekce"><span class="sekce-ikona">💬</span> Reference studentů</h2>
+    <div class="reference-studenti">
+        <blockquote class="student-citace">"Na škole se mi líbí moderní vybavení a přátelský kolektiv."<br><span class="student-jmeno">— Jana, 3. ročník</span></blockquote>
+        <blockquote class="student-citace">"Díky SPŠ Trutnov jsem získal skvělé základy pro vysokou školu."<br><span class="student-jmeno">— Petr, absolvent</span></blockquote>
+    </div>
+</section>
+
+<hr class="oddeleni-sekci" />
+
+<section class="sekce-kontakt">
+    <h2 class="nadpis-sekce"><span class="sekce-ikona">📞</span> Kontakt</h2>
+    <p class="kontakt-radek"><strong>Adresa:</strong> Horská 59, 541 01 Trutnov</p>
+    <p class="kontakt-radek"><strong>Email:</strong> info@sps-trutnov.cz</p>
+    <p class="kontakt-radek"><strong>Telefon:</strong> +420 499 840 111</p>
+</section>
 
 
