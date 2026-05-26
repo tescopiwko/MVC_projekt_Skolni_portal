@@ -94,6 +94,7 @@ main.obsah-s-prekryvem {
     color: #e3f2fd;
 }
 
+.tlacitko-upravit-profil,
 .tlacitko-zjistit-vice {
     font-size: 20px;
     padding: 12px 32px;
@@ -105,6 +106,7 @@ main.obsah-s-prekryvem {
     font-weight: bold;
     transition: background 0.2s, color 0.2s, transform 0.15s;
 }
+.tlacitko-upravit-profil:hover,
 .tlacitko-zjistit-vice:hover {
     background-color: #1976d2;
     color: #fff;
@@ -121,7 +123,7 @@ hr {
     border-color: #b2dfef;
 }
 
-.sekce-o-skole,
+.sekce-profil-ucitele,
 .sekce-obory,
 .sekce-novinky,
 .sekce-fotogalerie,
@@ -133,9 +135,17 @@ hr {
     border-radius: 12px;
 }
 
-.sekce-seda {
+.panel-sedy {
     background: #f1f3f4;
 }
+
+/* Pro stránku profilu učitele: odstraň "tmavý zaoblený" panel pod hlavním obsahem */
+.sekce-profil-ucitele {
+    background: transparent; /* žádné šedé pozadí */
+    padding: 0; /* odstraníme vnitřní odsazení tak, aby nebyl viditelný panel */
+}
+
+/* (Pozn.: původní dočasné odstranění pozadí karty bylo zrušeno níže — viz .profil-karta-vnitrni) */
 
 .nadpis-sekce {
     color: #0d47a1;
@@ -164,25 +174,25 @@ hr {
     color: #222;
     line-height: 1.6;
 }
-.seznam-oboru {
+.seznam-trid-predmetu {
     font-size: 18px;
     color: #1a237e;
     padding-left: 20px;
     margin-bottom: 0;
 }
-.seznam-oboru li {
+.seznam-trid-predmetu li {
     margin-bottom: 6px;
 }
 
 /***** Novinky *****/
-.novinky-karty {
+.karty-rozvrhu {
     display: flex;
     gap: 18px;
     flex-wrap: wrap;
     justify-content: center;
     margin-top: 10px;
 }
-.karta-novinka {
+.karta-rozvrhu {
     background: #fff;
     border-radius: 8px;
     padding: 18px 16px;
@@ -192,7 +202,7 @@ hr {
     cursor: pointer;
     border: 1px solid #e3f2fd;
 }
-.karta-novinka:hover {
+.karta-rozvrhu:hover {
     transform: translateY(-4px) scale(1.03);
     background: #f1f3f4;
 }
@@ -243,10 +253,221 @@ hr {
     font-size: 15px;
     font-style: italic;
 }
-.kontakt-radek {
+.radek-kontaktu {
     font-size: 17px;
     margin-bottom: 4px;
 }
+
+/* Jednoduché styly pro osobní údaje na profilu (začátečnická syntax) */
+.osobni-udaje {
+    font-size: 18px;
+    color: #222;
+}
+.radek-udaje {
+    margin-bottom: 10px;
+}
+.radek-udaje strong {
+    width: 120px;
+    display: inline-block;
+    color: #0d47a1;
+}
+
+/* Rozložení bez Bootstrap (česky pojmenované třídy) */
+.radek {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+.sloupec-4 {
+    flex: 0 0 33.333%;
+    max-width: 33.333%;
+}
+.sloupec-8 {
+    flex: 0 0 66.666%;
+    max-width: 66.666%;
+}
+.stredi-text {
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .sloupec-4, .sloupec-8 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    .radek {
+        flex-direction: column;
+    }
+}
+
+/* Záložky bez JS - pouze vizuální */
+.zalozky {
+    display: flex;
+    gap: 8px;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 12px 0;
+}
+.zalozka-polozka {
+}
+.zalozka-odkaz {
+    background: #fff;
+    border: 1px solid #e3f2fd;
+    padding: 8px 14px;
+    border-radius: 8px 8px 0 0;
+    cursor: default;
+    color: #1976d2;
+    font-weight: bold;
+}
+.zalozka-odkaz.aktivni {
+    background: linear-gradient(90deg,#1976d2,#64b5f6);
+    color: #fff;
+}
+.obsah-zalozek {
+    background: #fff;
+    padding: 16px;
+    border: 1px solid #e9f4ff;
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+}
+.zalozka-sekce {
+    margin-bottom: 12px;
+}
+
+/* Nová česká tlačítka */
+.tlacitko-primarni {
+    background: #fff;
+    color: #1976d2;
+    border: 1px solid #1976d2;
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.tlacitko-primarni:hover {
+    background: #1976d2;
+    color: #fff;
+}
+.tlacitko-druhy {
+    background: transparent;
+    color: #444;
+    border: 1px solid #ccc;
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* Styly pro nový jednoduchý profilový panel */
+.profil-kontainer {
+    max-width: 800px;
+    margin: -45px auto 0 auto; /* posunout kartu mírně nahoru, aby nebyla příliš daleko od horního okraje */
+    padding: 24px;
+    display: flex;
+    flex-direction: column; /* karta nahoře, akce pod ní */
+    align-items: center; /* centrovat kartu a akce */
+    gap: 12px;
+}
+.profil-karta {
+    display: flex;
+    gap: 0; /* no gap here; inner box handles padding */
+    align-items: center;
+    justify-content: center;
+    max-width: 880px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.profil-karta-vnitrni {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    background: #ffffff; /* visible white box */
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    width: 100%;
+    box-sizing: border-box;
+}
+.profil-avatar {
+    flex: 0 0 160px; /* rezervuje místo pro obrázek, nechá ho volně v rámci layoutu */
+    max-width: 160px;
+}
+.profil-avatar img {
+    width: 100%;
+    height: auto; /* zachová poměr stran obrázku */
+    object-fit: cover;
+    border-radius: 0; /* obdélníková fotka, bez zaoblení */
+    border: none; /* odstraněný rámeček kolem obrázku */
+    display: block;
+    background: transparent;
+}
+.profil-info {
+    text-align: center; /* celý obsah karty bude centrován */
+    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.profil-info h2 {
+    margin: 0 0 8px 0;
+    color: #0d47a1;
+}
+.profil-info p {
+    margin: 6px 0;
+}
+
+@media (max-width: 768px) {
+    .profil-karta {
+        flex-direction: column;
+        text-align: center;
+    }
+    .profil-info {
+        text-align: center;
+    }
+}
+
+/* Akční tlačítka pod kartou profilu */
+.profil-akce {
+    max-width: 880px; /* rozšířená šířka tak, aby ladila s kartou */
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    gap: 12px;
+    padding: 0 20px; /* stejné horizontální odsazení jako karta */
+    box-sizing: border-box;
+    justify-content: center; /* tlačítka budou centrována pod kartou */
+}
+.profil-tlacitko {
+    flex: 1; /* tlačítka stejné šířky vedle sebe */
+    padding: 12px 14px;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s ease, transform 0.08s ease, color 0.15s ease;
+}
+.profil-tlacitko.primarni {
+    background: #1976d2;
+    color: #fff;
+    border-color: #1976d2;
+}
+.profil-tlacitko.vedlejsi {
+    background: #fff;
+    color: #1976d2;
+    border: 2px solid #1976d2;
+}
+.profil-tlacitko:hover {
+    transform: translateY(-2px);
+    filter: brightness(0.98);
+}
+
+@media (max-width: 480px) {
+    .profil-akce { flex-direction: column; padding: 0 12px; }
+    .profil-tlacitko { width: 100%; }
+}
+
+
 
 /* --- Čistě bílá patička nad obrázkem --- */
 .paticka {
