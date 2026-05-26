@@ -96,7 +96,7 @@ main.obsah-s-prekryvem {
     padding: 12px 32px;
     background-color: #fff;
     color: #1976d2;
-    border: 1px solid;
+    border: 1px solid #fff;
     border-radius: 8px;
     cursor: pointer;
     font-weight: bold;
@@ -105,7 +105,7 @@ main.obsah-s-prekryvem {
     .tlacitko-zjistit-vice:hover {
         transition: transform 0.3s ease 0.2s, background-color 0.3s ease 0.2s, color color 0.3s ease 0.2s;
         background-color: #fff;
-        box-shadow: 0px 0px 15px 3px #fff;
+        box-shadow: 0px 0px 10px 3px #fff;
         color: #1976d2;
         transform: scale(1.05);
     }
