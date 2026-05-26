@@ -24,15 +24,15 @@ body {
     position: relative;
 }
 
-.menu a {
-    text-decoration: none;
-    color: darkblue;
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 20px;
-    margin: 0 15px;
-    padding-bottom: 3px;
-    font-weight: bold;
-}
+    .menu a {
+        text-decoration: none;
+        color: darkblue;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 20px;
+        margin: 0 15px;
+        padding-bottom: 3px;
+        font-weight: bold;
+    }
 
 .menu a:hover {
     border-bottom: 2px solid darkblue;
@@ -48,7 +48,7 @@ body {
 
 main.obsah-s-prekryvem {
     flex: 1; /* Roztáhne obsah, takže footer je dole */
-    background: rgba(255, 255, 255, 0.85); /* Poloprůhledný bílý přes obrázek */
+    background: rgba(255, 255, 255, 0.95); /* Poloprůhledný bílý přes obrázek */
     border-radius: 16px;
     max-width: 1200px;
     width: 90%;
@@ -59,7 +59,7 @@ main.obsah-s-prekryvem {
 
 .velky-nadpis {
     font-size: 48px;
-    color: teal;
+    color: royalblue;
     font-weight: bold;
     text-align: center;
     background-color: #ffffff;
@@ -71,12 +71,12 @@ main.obsah-s-prekryvem {
 }
 
 /* --- Úvodní banner sekce --- */
-.uvodni-banner {
-    background: linear-gradient(100deg, #1976d2 0%, #64b5f6 100%);
+.uvodni-banner { 
+    background-image: linear-gradient(100deg, #4040ff 0%, #42a5f5 100%);
     color: #fff;
     text-align: center;
     padding: 60px 20px 50px 20px;
-    border-radius: 0px 0px 16px 16px; 
+    border-radius: 0px 0px 16px 16px;
     margin-bottom: 40px;
 }
 
@@ -96,17 +96,19 @@ main.obsah-s-prekryvem {
     padding: 12px 32px;
     background-color: #fff;
     color: #1976d2;
-    border: 2px solid #1976d2;
+    border: 1px solid;
     border-radius: 8px;
     cursor: pointer;
     font-weight: bold;
     transition: background 0.2s, color 0.2s, transform 0.15s;
 }
-.tlacitko-zjistit-vice:hover {
-    background-color: #1976d2;
-    color: #fff;
-    transform: scale(1.06);
-}
+    .tlacitko-zjistit-vice:hover {
+        transition: transform 0.3s ease 0.2s, background-color 0.3s ease 0.2s, color color 0.3s ease 0.2s;
+        background-color: #fff;
+        box-shadow: 0px 0px 15px 3px #fff;
+        color: #1976d2;
+        transform: scale(1.05);
+    }
 
 hr {
     border: 2px solid darkblue;
@@ -191,7 +193,7 @@ hr {
 }
 .karta-novinka:hover {
     transform: translateY(-4px) scale(1.03);
-    background: #f1f3f4;
+    background: #D0D0ff;
 }
 
 /***** Fotogalerie *****/
