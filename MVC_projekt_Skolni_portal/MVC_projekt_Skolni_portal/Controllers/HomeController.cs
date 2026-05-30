@@ -11,6 +11,11 @@ namespace MVC_projekt_Skolni_portal.Controllers
             return View();
         }
 
+        public IActionResult prihlasit()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();
