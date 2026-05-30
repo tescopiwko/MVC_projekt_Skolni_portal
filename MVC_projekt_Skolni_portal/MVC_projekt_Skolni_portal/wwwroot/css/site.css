@@ -91,6 +91,7 @@ main.obsah-s-prekryvem {
     color: #e3f2fd;
 }
 
+.tlacitko-upravit-profil,
 .tlacitko-zjistit-vice {
     font-size: 20px;
     padding: 12px 32px;
@@ -102,6 +103,7 @@ main.obsah-s-prekryvem {
     font-weight: bold;
     transition: background 0.2s, color 0.2s, transform 0.15s;
 }
+.tlacitko-upravit-profil:hover,
 .tlacitko-zjistit-vice:hover {
     background-color: #1976d2;
     color: #fff;
@@ -118,7 +120,7 @@ hr {
     border-color: #b2dfef;
 }
 
-.sekce-o-skole,
+.sekce-profil-ucitele,
 .sekce-obory,
 .sekce-novinky,
 .sekce-fotogalerie,
@@ -130,9 +132,17 @@ hr {
     border-radius: 12px;
 }
 
-.sekce-seda {
+.panel-sedy {
     background: #f1f3f4;
 }
+
+/* Pro stránku profilu učitele: odstraň "tmavý zaoblený" panel pod hlavním obsahem */
+.sekce-profil-ucitele {
+    background: transparent; /* žádné šedé pozadí */
+    padding: 0; /* odstraníme vnitřní odsazení tak, aby nebyl viditelný panel */
+}
+
+/* (Pozn.: původní dočasné odstranění pozadí karty bylo zrušeno níže — viz .profil-karta-vnitrni) */
 
 .nadpis-sekce {
     color: #0d47a1;
@@ -143,15 +153,7 @@ hr {
     align-items: center;
     gap: 10px;
 }
-.nadpis-sekce::after {
-    content: '';
-    display: block;
-    height: 4px;
-    width: 60px;
-    background: linear-gradient(90deg, #1976d2 60%, #64b5f6 100%);
-    border-radius: 2px;
-    margin-left: 12px;
-}
+
 .sekce-ikona {
     font-size: 28px;
     margin-right: 2px;
@@ -161,25 +163,25 @@ hr {
     color: #222;
     line-height: 1.6;
 }
-.seznam-oboru {
+.seznam-trid-predmetu {
     font-size: 18px;
     color: #1a237e;
     padding-left: 20px;
     margin-bottom: 0;
 }
-.seznam-oboru li {
+.seznam-trid-predmetu li {
     margin-bottom: 6px;
 }
 
 /***** Novinky *****/
-.novinky-karty {
+.karty-rozvrhu {
     display: flex;
     gap: 18px;
     flex-wrap: wrap;
     justify-content: center;
     margin-top: 10px;
 }
-.karta-novinka {
+.karta-rozvrhu {
     background: #fff;
     border-radius: 8px;
     padding: 18px 16px;
@@ -189,7 +191,7 @@ hr {
     cursor: pointer;
     border: 1px solid #e3f2fd;
 }
-.karta-novinka:hover {
+.karta-rozvrhu:hover {
     transform: translateY(-4px) scale(1.03);
     background: #f1f3f4;
 }
@@ -240,10 +242,347 @@ hr {
     font-size: 15px;
     font-style: italic;
 }
-.kontakt-radek {
+.radek-kontaktu {
     font-size: 17px;
     margin-bottom: 4px;
 }
+
+/* Jednoduché styly pro osobní údaje na profilu (začátečnická syntax) */
+.osobni-udaje {
+    font-size: 18px;
+    color: #222;
+}
+.radek-udaje {
+    margin-bottom: 10px;
+}
+.radek-udaje strong {
+    width: 120px;
+    display: inline-block;
+    color: #0d47a1;
+}
+
+/* Rozložení bez Bootstrap (česky pojmenované třídy) */
+.radek {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+.sloupec-4 {
+    flex: 0 0 33.333%;
+    max-width: 33.333%;
+}
+.sloupec-8 {
+    flex: 0 0 66.666%;
+    max-width: 66.666%;
+}
+.stredi-text {
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .sloupec-4, .sloupec-8 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    .radek {
+        flex-direction: column;
+    }
+}
+
+/* Záložky bez JS - pouze vizuální */
+.zalozky {
+    display: flex;
+    gap: 8px;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 12px 0;
+}
+.zalozka-polozka {
+}
+.zalozka-odkaz {
+    background: #fff;
+    border: 1px solid #e3f2fd;
+    padding: 8px 14px;
+    border-radius: 8px 8px 0 0;
+    cursor: default;
+    color: #1976d2;
+    font-weight: bold;
+}
+.zalozka-odkaz.aktivni {
+    background: linear-gradient(90deg,#1976d2,#64b5f6);
+    color: #fff;
+}
+.obsah-zalozek {
+    background: #fff;
+    padding: 16px;
+    border: 1px solid #e9f4ff;
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+}
+.zalozka-sekce {
+    margin-bottom: 12px;
+}
+
+/* Nová česká tlačítka */
+.tlacitko-primarni {
+    background: #fff;
+    color: #1976d2;
+    border: 1px solid #1976d2;
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.tlacitko-primarni:hover {
+    background: #1976d2;
+    color: #fff;
+}
+.tlacitko-druhy {
+    background: transparent;
+    color: #444;
+    border: 1px solid #ccc;
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* Styly pro nový jednoduchý profilový panel */
+.profil-kontainer {
+    max-width: 800px;
+    margin: -45px auto 0 auto; /* posunout kartu mírně nahoru, aby nebyla příliš daleko od horního okraje */
+    padding: 24px;
+    display: flex;
+    flex-direction: column; /* karta nahoře, akce pod ní */
+    align-items: center; /* centrovat kartu a akce */
+    gap: 6px; /* zmenšená mezera mezi kartou a akcemi */
+}
+.profil-karta {
+    display: flex;
+    gap: 0; /* no gap here; inner box handles padding */
+    align-items: center;
+    justify-content: center;
+    max-width: 880px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.profil-karta-vnitrni {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    background: #ffffff; /* visible white box */
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    width: 100%;
+    box-sizing: border-box;
+}
+.profil-avatar {
+    flex: 0 0 160px; /* rezervuje místo pro obrázek, nechá ho volně v rámci layoutu */
+    max-width: 160px;
+}
+.profil-avatar img {
+    width: 100%;
+    height: auto; /* zachová poměr stran obrázku */
+    object-fit: cover;
+    border-radius: 0; /* obdélníková fotka, bez zaoblení */
+    border: none; /* odstraněný rámeček kolem obrázku */
+    display: block;
+    background: transparent;
+}
+.profil-info {
+    text-align: center; /* celý obsah karty bude centrován */
+    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.profil-info h2 {
+    margin: 0 0 8px 0;
+    color: #0d47a1;
+}
+.profil-info p {
+    margin: 6px 0;
+}
+
+@media (max-width: 768px) {
+    .profil-karta {
+        flex-direction: column;
+        text-align: center;
+    }
+    .profil-info {
+        text-align: center;
+    }
+}
+
+/* Akční tlačítka pod kartou profilu */
+.profil-akce {
+    /* kontejner pro tlačítka: tlačítka se roztáhnou a potkají na středu */
+    max-width: 880px;
+    width: 100%;
+    display: flex;
+    gap: 10px; /* mezera mezi tlačítky */
+    padding: 0; /* bez vnějšího paddingu */
+    box-sizing: border-box;
+}
+.profil-tlacitko {
+    flex: 1; /* roztáhne tlačítka rovnoměrně */
+    padding: 12px 18px;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s ease, transform 0.08s ease, color 0.15s ease;
+}
+.profil-tlacitko {
+    background: #1976d2;
+    color: #fff;
+    border-color: #1976d2;
+}
+.profil-tlacitko:hover {
+    transform: translateY(-2px);
+    filter: brightness(0.98);
+}
+
+/* Pokud chcete, aby tlačítka přesně lícovala s vnitřními okraji .profil-karta-vnitrni
+   (které mají padding: 20px), vytvoříme pomocné pravidlo, které posune tlačítka
+   o přesně 20px od okraje kontejneru .profil-akce. */
+.profil-akce .profil-tlacitko:first-child {
+    margin-left: 0px; /* levý okraj levého tlačítka = levý vnitřní okraj karty */
+}
+.profil-akce .profil-tlacitko:last-child {
+    margin-right: 0px; /* pravý okraj pravého tlačítka = pravý vnitřní okraj karty */
+}
+
+/* Bílý zaoblený panel nad tlačítky */
+/* Sekce hodnocení pod tlačítky profilu */
+.hodnoceni-sekce {
+    max-width: 880px;
+    margin: 18px auto 40px auto;
+    background: #fff;
+    padding: 18px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+.hodnoceni-forma .dropdown-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: flex-end;
+}
+.hodnoceni-forma .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 160px;
+}
+.hodnoceni-forma .form-select {
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid #e3f2fd;
+    background: #fff;
+}
+.hodnoceni-forma .form-group label {
+    font-weight: 600;
+    color: #0d47a1;
+}
+.hodnoceni-forma .form-actions {
+    margin-top: 12px;
+    display: flex;
+    gap: 10px;
+}
+
+@media (max-width: 680px) {
+    .hodnoceni-forma .dropdown-row { flex-direction: column; }
+    .hodnoceni-forma .form-group { width: 100%; }
+}
+
+/* CSS-only tabs: Rozvrh / Třídy (descriptive teacher-profile classes) */
+.teacher-profile-tabs .teacher-tab-toggle { display: none; }
+.teacher-profile-tabs .teacher-tab-buttons { display: flex; gap: 8px; margin-bottom: 12px; }
+.teacher-profile-tabs .teacher-tab-button {
+    padding: 8px 14px; border-radius: 8px; cursor: pointer;
+    background: #e3f2fd; color: #0d47a1; border: 1px solid #cfe7ff;
+}
+.teacher-profile-tabs .teacher-tab-panels > section { display: none; }
+.teacher-profile-tabs #tab-rozvrh:checked ~ .teacher-tab-buttons label[for="tab-rozvrh"],
+.teacher-profile-tabs #tab-tridy-znamky:checked ~ .teacher-tab-buttons label[for="tab-tridy-znamky"] {
+    background: #1976d2; color: #fff; border-color: #1976d2;
+}
+.teacher-profile-tabs #tab-rozvrh:checked ~ .teacher-tab-panels .teacher-schedule-panel 
+{ 
+    display: block; 
+
+}
+.teacher-profile-tabs #tab-tridy-znamky:checked ~ .teacher-tab-panels .teacher-grades-panel { 
+    display: block; 
+
+}
+
+.teacher-schedule-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+.teacher-schedule-table th, .teacher-schedule-table td { border: 1px solid #ffffff; padding: 8px; text-align: left; }
+.teacher-schedule-table th { background: #f1f8ff; }
+
+/* Základní tabulka rozvrhu (tradiční vzhled) */
+.schedule-table,
+.teacher-schedule-table {
+    width: 100%;
+    border-collapse: collapse; /* klasické sloučení rámečků */
+    margin-top: 12px;
+}
+.schedule-table th,
+.teacher-schedule-table th {
+    padding: 8px 10px;
+    border: 1px solid #dceefc;
+    background: #ffffff;
+    text-align: center;
+    font-weight: 700;
+    color: #0d47a1;
+}
+.schedule-table td,
+.teacher-schedule-table td {
+    padding: 10px 12px;
+    border: 1px solid #e6f4ff;
+    background: #ffffff; /* bílé buňky */
+    text-align: left;
+    vertical-align: middle;
+    line-height: 1.4;
+}
+.schedule-table td:first-child,
+.teacher-schedule-table td:first-child {
+    width: 130px;
+    font-weight: 600;
+    text-align: center;
+}
+
+@media (max-width: 680px) {
+    .schedule-table th,
+    .schedule-table td,
+    .teacher-schedule-table th,
+    .teacher-schedule-table td {
+        padding: 8px;
+    }
+    .schedule-table td:first-child,
+    .teacher-schedule-table td:first-child {
+        width: auto;
+    }
+}
+
+/* Odsazení shora pro akční tlačítka ve formuláři hodnocení (Uložit) */
+.teacher-grades-form .form-actions {
+    margin-top: 18px; /* upravte hodnotu podle potřeby */
+}
+
+
+
+
+@media (max-width: 480px) {
+    .profil-akce { flex-direction: column; padding: 0 12px; }
+    .profil-tlacitko { width: 100%; min-width: 0; margin-t}
+}
+
+
 
 /* --- Čistě bílá patička nad obrázkem --- */
 .paticka {
@@ -255,6 +594,7 @@ hr {
     box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
     width: 100%;
 }
+
 
 
 .lightbox {

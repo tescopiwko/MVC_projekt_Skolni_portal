@@ -1,0 +1,177 @@
+﻿@{
+    ViewData["Title"] = "Profil učitele";
+    ViewData["NadpisClass"] = "velky-nadpis"; // použije se v _Layout.cshtml
+}
+
+<div class="sekce-profil-ucitele panel-sedy">
+    <div class="profil-kontainer">
+        <div class="profil-karta">
+            <div class="profil-karta-vnitrni">
+                <div class="profil-avatar">
+                    <img src="~/obrazky/guest.png" alt="Avatar" class="profil-avatar-img" />
+                </div>
+                <div class="profil-info">
+                    <h2>Jméno Příjmení</h2>
+                    <p class="radek-udaje"><strong>Předmět:</strong> Matematika</p>
+                    <p class="radek-udaje"><strong>Adresa:</strong> Ulice 123, Město</p>
+                    <p class="radek-udaje"><strong>Školní e-mail:</strong> ucitel@skola.cz</p>
+                    <p class="radek-udaje"><strong>Telefon:</strong> +420 123 456 789</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sekce s CSS-only přepínačem (výchozí: Rozvrh) -->
+    <section class="teacher-tabs-section teacher-profile-tabs">
+        <input class="teacher-tab-toggle" type="radio" id="tab-rozvrh" name="profil-tabs" checked />
+        <input class="teacher-tab-toggle" type="radio" id="tab-tridy-znamky" name="profil-tabs" />
+
+        <div class="teacher-tab-buttons">
+            <label for="tab-rozvrh"       class="teacher-tab-button">Rozvrh</label>
+            <label for="tab-tridy-znamky" class="teacher-tab-button">Třídy/Známky</label>
+        </div>
+
+        <div class="teacher-tab-panels">
+            <section class="teacher-schedule-panel">
+                <h3 class="nadpis-sekce">Rozvrh</h3>
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>Dny \ Čas</th>
+                            <th>8:00 - 8:45</th>
+                            <th>8:55 - 9:40</th>
+                            <th>9:50 - 10:35</th>
+                            <th>10:45 - 11:30</th>
+                            <th>11:40 - 12:25</th>
+                            <th>12:35 - 13:20</th>
+                            <th>13:20 - 14:05</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Pondělí</td>
+                            <td contenteditable="true">Matematika</td>
+                            <td contenteditable="true">Matematika</td>
+                            <td contenteditable="true">Matematika</td>
+                            <td contenteditable="true">-</td>
+                            <td contenteditable="true">-</td>
+                            <td contenteditable="true">-</td>
+                            <td contenteditable="true">-</td>
+                        </tr>
+                        <tr>
+                            <td>Úterý</td>
+                            <td contenteditable="true">Matematika</td>
+                            <td contenteditable="true">Matematika</td>
+                            <td contenteditable="true">-</td>
+                            <td contenteditable="true">Matematika</td>
+                            <td contenteditable="true">-</td>
+                            <td contenteditable="true">-</td>
+                            <td contenteditable="true">-</td>
+                        </tr>
+                        <tr>
+                            <td>Středa</td>
+                            <td contenteditable="true">Matematika</td>
+                            <td contenteditable="true">-</td>
+                            <td contenteditable="true">Matematika</td>
+                            <td contenteditable="true">-</td>
+                            <td contenteditable="true">-</td>
+                            <td contenteditable="true">-</td>
+                            <td contenteditable="true">-</td>
+                        </tr>
+                        <tr>
+                            <td>Čtvrtek</td>
+                            <td contenteditable="true">Matematika</td>
+                            <td contenteditable="true">Matematika</td>
+                            <td contenteditable="true">Matematika</td>
+                            <td contenteditable="true">Matematika</td>
+                            <td contenteditable="true">-</td>
+                            <td contenteditable="true">-</td>
+                            <td contenteditable="true">Matematika</td>
+                        </tr>
+                        <tr>
+                            <td>Pátek</td>
+                            <td contenteditable="true">Matematika</td>
+                            <td contenteditable="true">-</td>
+                            <td contenteditable="true">Matematika</td>
+                            <td contenteditable="true">-</td>
+                            <td contenteditable="true">-</td>
+                            <td contenteditable="true">-</td>
+                            <td contenteditable="true">-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="teacher-grades-panel">
+                <h3 class="nadpis-sekce">Hodnocení studentů</h3>
+                <form class="teacher-grades-form" method="post" action="#">
+                    <div class="dropdown-row">
+                        <div class="form-group">
+                            <label for="tridaSelect">Třída</label>
+                            <select id="tridaSelect" name="trida" class="form-select">
+                                <option>1.A</option>
+                                <option>1.B</option>
+                                <option>2.A</option>
+                                <option>2.B</option>
+                                <option>3.A</option>
+                                <option>3.B</option>
+                                <option>4.A</option>
+                                <option>4.B</option>
+                                <option>5.A</option>
+                                <option>5.B</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="zakSelect">Žák</label>
+                            <select id="zakSelect" name="zak" class="form-select">
+                                <option>Jan Novák</option>
+                                <option>Petra Svobodová</option>
+                                <option>Tomáš Dvořák</option>
+                                <option>Eva Malá</option>
+                                <option>Martin Horák</option>
+                                <option>Jana Králová</option>
+                                <option>Petr Novotný</option>
+                                <option>Lucie Bílá</option>
+                                <option>Filip Veselý</option>
+                                <option>Anna Černá</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="znamkaSelect">Známka</label>
+                            <select id="znamkaSelect" name="znamka" class="form-select">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="vahaSelect">Váha</label>
+                            <select id="vahaSelect" name="vaha" class="form-select">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                                <option>10</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="profil-tlacitko primarni">Uložit hodnocení</button>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </section>
+
+</div>
