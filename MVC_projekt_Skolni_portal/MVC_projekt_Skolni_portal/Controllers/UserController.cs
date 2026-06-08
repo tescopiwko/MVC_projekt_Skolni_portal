@@ -24,5 +24,10 @@ namespace _06_AspNetCore.Controllers
         {
             return View();
         }
+
+        public IActionResult Registrace()
+        {
+            return View();
+        }
     }
 }

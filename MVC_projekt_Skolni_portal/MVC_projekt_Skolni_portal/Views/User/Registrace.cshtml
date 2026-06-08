@@ -1,0 +1,171 @@
+﻿@{
+    ViewData["Title"] = "Registrace";
+    ViewData["NadpisClass"] = "velky-nadpis";
+}
+
+<div class="uvodni-banner">
+    <h1 class="uvodni-nadpis">Registrace do portálu</h1>
+    <p class="uvodni-podnadpis">Vytvořte si nový účet na školním portálu</p>
+</div>
+
+<section class="sekce-prihlaseni sekce-seda" style="max-width: 500px; margin: 40px auto;">
+    <h2 style="text-align: center; color: #0d47a1; font-size: 28px; margin-bottom: 14px;">Registrace</h2>
+
+    <form method="post" style="margin-top: 30px;" class="registrace-form">
+        <!-- Zvoleni role pres CSS tabs misto JS -->
+        <input class="role-tab-toggle" type="radio" id="role-zak" name="role" value="zak" checked />
+        <input class="role-tab-toggle" type="radio" id="role-ucitel" name="role" value="ucitel" />
+
+        <div style="margin-bottom: 20px;">
+            <label style="display: block; margin-bottom: 12px; font-weight: bold; color: #0d47a1;">Registruji se jako:</label>
+            <div class="role-tab-buttons">
+                <label for="role-zak" class="role-tab-button">Žák</label>
+                <label for="role-ucitel" class="role-tab-button">Učitel</label>
+            </div>
+        </div>
+
+        <div style="display: flex; gap: 15px; margin-bottom: 20px;">
+            <div style="flex: 1;">
+                <label for="jmeno" style="display: block; margin-bottom: 8px; font-weight: bold; color: #0d47a1;">Jméno:</label>
+                <input type="text" id="jmeno" name="jmeno" required
+                       style="width: 100%; padding: 12px; border: 2px solid #b2dfef; border-radius: 6px; font-size: 16px; box-sizing: border-box;"
+                       placeholder="Např. Jan" />
+            </div>
+            <div style="flex: 1;">
+                <label for="prijmeni" style="display: block; margin-bottom: 8px; font-weight: bold; color: #0d47a1;">Příjmení:</label>
+                <input type="text" id="prijmeni" name="prijmeni" required
+                       style="width: 100%; padding: 12px; border: 2px solid #b2dfef; border-radius: 6px; font-size: 16px; box-sizing: border-box;"
+                       placeholder="Např. Novák" />
+            </div>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <label for="adresa" style="display: block; margin-bottom: 8px; font-weight: bold; color: #0d47a1;">Adresa:</label>
+            <input type="text" id="adresa" name="adresa" required
+                   style="width: 100%; padding: 12px; border: 2px solid #b2dfef; border-radius: 6px; font-size: 16px; box-sizing: border-box;"
+                   placeholder="Např. Ulice 45, Město" />
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <label for="telefon" style="display: block; margin-bottom: 8px; font-weight: bold; color: #0d47a1;">Telefon:</label>
+            <input type="tel" id="telefon" name="telefon" required
+                   style="width: 100%; padding: 12px; border: 2px solid #b2dfef; border-radius: 6px; font-size: 16px; box-sizing: border-box;"
+                   placeholder="Např. +420 123 456 789" />
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <label for="skolniEmail" style="display: block; margin-bottom: 8px; font-weight: bold; color: #0d47a1;">Školní e-mail:</label>
+            <input type="email" id="skolniEmail" name="skolniEmail" required
+                   style="width: 100%; padding: 12px; border: 2px solid #b2dfef; border-radius: 6px; font-size: 16px; box-sizing: border-box;"
+                   placeholder="Např. jan.novak@skola.cz" />
+        </div>
+
+        <div class="dynamic-panels">
+            <!-- Třída (pouze pro žáky) -->
+            <div id="sekce-trida" class="dynamic-panel-zak" style="margin-bottom: 20px;">
+                <label for="trida" style="display: block; margin-bottom: 8px; font-weight: bold; color: #0d47a1;">Třída:</label>
+                <select id="trida" name="trida"
+                        style="width: 100%; padding: 12px; border: 2px solid #b2dfef; border-radius: 6px; font-size: 16px; box-sizing: border-box; background-color: white;">
+                    <option value="" disabled selected>Vyberte třídu</option>
+                    <option value="1.A">1.A</option>
+                    <option value="1.B">1.B</option>
+                    <option value="2.A">2.A</option>
+                    <option value="2.B">2.B</option>
+                    <option value="3.A">3.A</option>
+                    <option value="3.B">3.B</option>
+                    <option value="4.A">4.A</option>
+                    <option value="4.B">4.B</option>
+                </select>
+            </div>
+
+            <!-- Předmět (pouze pro učitele) -->
+            <div id="sekce-predmet" class="dynamic-panel-ucitel" style="margin-bottom: 20px;">
+                <label for="predmet" style="display: block; margin-bottom: 8px; font-weight: bold; color: #0d47a1;">Vyučovaný předmět:</label>
+                <select id="predmet" name="predmet"
+                        style="width: 100%; padding: 12px; border: 2px solid #b2dfef; border-radius: 6px; font-size: 16px; box-sizing: border-box; background-color: white;">
+                    <option value="" disabled selected>Vyberte předmět</option>
+                    <option value="Matematika">Matematika</option>
+                    <option value="Vývoj softwaru">Vývoj softwaru</option>
+                    <option value="IoT">IoT</option>
+                    <option value="Tělesná výchova">Tělesná výchova</option>
+                    <option value="Anglický jazyk">Anglický jazyk</option>
+                    <option value="Počítačové sítě">Počítačové sítě</option>
+                    <option value="Webové stránky">Webové stránky</option>
+                    <option value="Český jazyk">Český jazyk</option>
+                    <option value="Fyzika">Fyzika</option>
+                    <option value="Mechatronika">Mechatronika</option>
+                    <option value="Operační systémy">Operační systémy</option>
+                </select>
+            </div>
+        </div>
+
+        <hr style="margin: 30px 0; border-color: #b2dfef;" />
+
+        <div style="margin-bottom: 20px;">
+            <label for="username" style="display: block; margin-bottom: 8px; font-weight: bold; color: #0d47a1;">Uživatelské jméno (Login):</label>
+            <input type="text" id="username" name="username" required
+                   style="width: 100%; padding: 12px; border: 2px solid #b2dfef; border-radius: 6px; font-size: 16px; box-sizing: border-box;"
+                   placeholder="Zadejte uživatelské jméno" />
+        </div>
+
+        <div style="display: flex; gap: 15px; margin-bottom: 30px;">
+            <div style="flex: 1;">
+                <label for="password" style="display: block; margin-bottom: 8px; font-weight: bold; color: #0d47a1;">Heslo:</label>
+                <input type="password" id="password" name="password" required
+                       style="width: 100%; padding: 12px; border: 2px solid #b2dfef; border-radius: 6px; font-size: 16px; box-sizing: border-box;"
+                       placeholder="Zadejte heslo" />
+            </div>
+            <div style="flex: 1;">
+                <label for="confirmPassword" style="display: block; margin-bottom: 8px; font-weight: bold; color: #0d47a1;">Potvrzení hesla:</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required
+                       style="width: 100%; padding: 12px; border: 2px solid #b2dfef; border-radius: 6px; font-size: 16px; box-sizing: border-box;"
+                       placeholder="Heslo znovu" />
+            </div>
+        </div>
+
+        <button type="submit" class="tlacitko-prihlaseni"
+                style="width: 100%; padding: 14px; font-size: 18px; background-color: #1976d2; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; transition: background 0.2s, transform 0.15s;">
+            Zaregistrovat se
+        </button>
+    </form>
+
+    <hr style="margin: 30px 0; border-color: #b2dfef;" />
+
+    <p style="text-align: center; color: #666; font-size: 14px; margin-top: 15px;">
+        <a href="@Url.Action("Index", "Home")" style="color: #0d47a1; text-decoration: none;">← Zpět na domovskou stránku</a>
+    </p>
+</section>
+
+<style>
+    .tlacitko-prihlaseni:hover {
+        background-color: #1565c0;
+        transform: scale(1.02);
+    }
+
+    .sekce-prihlaseni {
+        padding: 40px;
+    }
+
+    /* CSS Toggles pro Role */
+    .registrace-form .role-tab-toggle { display: none; }
+
+    .registrace-form .role-tab-buttons { display: flex; gap: 8px; }
+    .registrace-form .role-tab-button {
+        flex: 1; padding: 10px; border-radius: 8px; cursor: pointer; text-align: center;
+        background: #e3f2fd; color: #0d47a1; border: 1px solid #cfe7ff; font-weight: bold; transition: 0.2s;
+    }
+    .registrace-form .role-tab-button:hover { background: #d0e7fb; }
+
+    .registrace-form #role-zak:checked ~ div .role-tab-buttons label[for="role-zak"],
+    .registrace-form #role-ucitel:checked ~ div .role-tab-buttons label[for="role-ucitel"] {
+        background: #1976d2; color: #fff; border-color: #1976d2;
+    }
+
+    .registrace-form .dynamic-panels .dynamic-panel-zak,
+    .registrace-form .dynamic-panels .dynamic-panel-ucitel {
+        display: none;
+    }
+
+    .registrace-form #role-zak:checked ~ .dynamic-panels .dynamic-panel-zak { display: block; }
+    .registrace-form #role-ucitel:checked ~ .dynamic-panels .dynamic-panel-ucitel { display: block; }
+</style>
