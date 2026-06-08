@@ -465,40 +465,49 @@ hr {
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
-.hodnoceni-forma .dropdown-row {
+.teacher-grades-form .dropdown-row {
     display: flex;
     gap: 12px;
     flex-wrap: wrap;
     align-items: flex-end;
 }
-.hodnoceni-forma .form-group {
+.teacher-grades-form .dropdown-row .form-group {
+    flex: 1;
+}
+.teacher-grades-form .form-group {
     display: flex;
     flex-direction: column;
     gap: 6px;
     min-width: 160px;
 }
-.hodnoceni-forma .form-select {
+.teacher-grades-form .form-select,
+.teacher-grades-form .form-input {
     padding: 8px 10px;
     border-radius: 8px;
     border: 1px solid #e3f2fd;
     background: #fff;
+    cursor: pointer;
 }
-.hodnoceni-forma .form-group label {
+.teacher-grades-form .form-group label {
     font-weight: 600;
     color: #0d47a1;
 }
-.hodnoceni-forma .form-actions {
+.teacher-grades-form .form-actions {
     margin-top: 12px;
     display: flex;
     gap: 10px;
 }
 
 @media (max-width: 680px) {
-    .hodnoceni-forma .dropdown-row { flex-direction: column; }
-    .hodnoceni-forma .form-group { width: 100%; }
+    .teacher-grades-form .dropdown-row { flex-direction: column; }
+    .teacher-grades-form .form-group { width: 100%; }
 }
 
 /* CSS-only tabs: Rozvrh / Třídy (descriptive teacher-profile classes) */
+.teacher-profile-tabs {
+    width: 100%;
+    max-width: 880px;
+}
 .teacher-profile-tabs .teacher-tab-toggle { display: none; }
 .teacher-profile-tabs .teacher-tab-buttons { display: flex; gap: 8px; margin-bottom: 12px; }
 .teacher-profile-tabs .teacher-tab-button {
@@ -506,6 +515,9 @@ hr {
     background: #e3f2fd; color: #0d47a1; border: 1px solid #cfe7ff;
 }
 .teacher-profile-tabs .teacher-tab-panels > section { display: none; }
+.teacher-profile-tabs .teacher-tab-panels { min-height: 500px; }
+.teacher-profile-tabs .teacher-tab-panels > section { padding-top: 8px; }
+.teacher-profile-tabs .teacher-tab-buttons { margin-bottom: 16px; }
 .teacher-profile-tabs #tab-rozvrh:checked ~ .teacher-tab-buttons label[for="tab-rozvrh"],
 .teacher-profile-tabs #tab-tridy-znamky:checked ~ .teacher-tab-buttons label[for="tab-tridy-znamky"] {
     background: #1976d2; color: #fff; border-color: #1976d2;
