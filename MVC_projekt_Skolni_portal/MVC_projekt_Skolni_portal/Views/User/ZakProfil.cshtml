@@ -1,3 +1,85 @@
 ﻿@{
-    ViewData["Title"] = "Žák";
+    ViewData["Title"] = "Profil žáka";
+    ViewData["NadpisClass"] = "velky-nadpis";
 }
+
+<div class="sekce-profil-ucitele panel-sedy">
+    <div class="profil-kontainer">
+        <div class="profil-karta">
+            <div class="profil-karta-vnitrni">
+                <div class="profil-avatar">
+                    <img src="~/obrazky/guest.png" alt="Avatar" />
+                </div>
+                <div class="profil-info">
+                    <h2>Jméno Příjmení</h2>
+                    <p class="radek-udaje"><strong>Třída:</strong> 2.A (temp)</p>
+                    <p class="radek-udaje"><strong>Adresa:</strong> Ulice 45, Město</p>
+                    <p class="radek-udaje"><strong>Školní e-mail:</strong> zak@skola.cz</p>
+                    <p class="radek-udaje"><strong>Telefon:</strong> +420 777 888 999</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- jednoduché záložky bez JavaScriptu -->
+        <section class="teacher-tabs-section teacher-profile-tabs">
+            <input class="teacher-tab-toggle" type="radio" id="tab-rozvrh" name="profil-tabs" checked />
+            <input class="teacher-tab-toggle" type="radio" id="tab-tridy-znamky" name="profil-tabs" />
+
+            <div class="teacher-tab-buttons">
+                <label for="tab-rozvrh" class="teacher-tab-button">Rozvrh</label>
+                <label for="tab-tridy-znamky" class="teacher-tab-button">Známky</label>
+            </div>
+
+            <div class="teacher-tab-panels">
+                <section class="teacher-schedule-panel">
+                    <h3 class="nadpis-sekce">Rozvrh žáka</h3>
+                    <table class="schedule-table">
+                        <thead>
+                            <tr>
+                                <th>Dny \ Čas</th>
+                                <th>8:00 - 8:45</th>
+                                <th>8:55 - 9:40</th>
+                                <th>9:50 - 10:35</th>
+                                <th>10:45 - 11:30</th>
+                                <th>11:40 - 12:25</th>
+                                <th>12:35 - 13:20</th>
+                                <th>13:20 - 14:05</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Pondělí</td><td>Matematika</td><td>Vývoj softwaru</td><td>-</td><td>IoT</td><td>Tělesná výchova</td><td>Anglický jazyk</td><td>-</td></tr>
+                            <tr><td>Úterý</td><td>Počítačové sítě</td><td>Webové stránky</td><td>Matematika</td><td>Český jazyk</td><td>Fyzika</td><td>-</td><td>-</td></tr>
+                            <tr><td>Středa</td><td>Mechatronika</td><td>Vývoj softwaru</td><td>Operační systémy</td><td>-</td><td>Anglický jazyk</td><td>Matematika</td><td>-</td></tr>
+                            <tr><td>Čtvrtek</td><td>Matematika</td><td>Počítačové sítě</td><td>Webové stránky</td><td>Vývoj softwaru</td><td>Fyzika</td><td>-</td><td>-</td></tr>
+                            <tr><td>Pátek</td><td>-</td><td>Matematika</td><td>IoT</td><td>Mechatronika</td><td>Český jazyk</td><td>-</td><td>-</td></tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <section class="teacher-grades-panel">
+                    <h3 class="nadpis-sekce">Známky</h3>
+                    <table class="schedule-table">
+                        <thead>
+                            <tr>
+                                <th>Předmět</th>
+                                <th>Známka</th>
+                                <th>Typ hodnocení</th>
+                                <th>Datum</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Matematika</td><td><strong>2</strong></td><td>Pololetní test</td><td>12. 03. 2026</td></tr>
+                            <tr><td>Vývoj softwaru</td><td><strong>1</strong></td><td>Samostatný projekt</td><td>02. 04. 2026</td></tr>
+                            <tr><td>Počítačové sítě</td><td><strong>1</strong></td><td>Ústní zkoušení</td><td>15. 04. 2026</td></tr>
+                            <tr><td>Anglický jazyk</td><td><strong>3</strong></td><td>Test ze slovíček</td><td>20. 04. 2026</td></tr>
+                            <tr><td>Český jazyk</td><td><strong>2</strong></td><td>Slohová práce</td><td>22. 04. 2026</td></tr>
+                            <tr><td>Fyzika</td><td><strong>1</strong></td><td>Laboratorní práce</td><td>25. 04. 2026</td></tr>
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+        </section>
+
+    </div>
+</div>
+
