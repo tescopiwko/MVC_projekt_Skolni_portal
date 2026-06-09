@@ -1,3 +1,4 @@
+using AspNetCoreGeneratedDocument;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -9,6 +10,23 @@ namespace _06_AspNetCore.Controllers
 
         public IActionResult Prihlaseni()
         { 
+            return View();
+        }
+
+
+        public IActionResult UcitelProfil()
+        {
+            return View();
+        }
+
+
+        public IActionResult ZakProfil()
+        {
+            return View();
+        }
+
+        public IActionResult Registrace()
+        {
             return View();
         }
     }

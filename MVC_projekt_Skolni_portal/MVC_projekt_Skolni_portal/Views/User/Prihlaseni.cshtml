@@ -1,3 +1,51 @@
 ﻿@{
     ViewData["Title"] = "Přihlášení";
+    ViewData["NadpisClass"] = "velky-nadpis";
 }
+
+<div class="uvodni-banner">
+    <h1 class="uvodni-nadpis">Přihlášení do portálu</h1>
+    <p class="uvodni-podnadpis">Přihlaste se ke svému účtu na školním portálu</p>
+</div>
+
+<section class="sekce-prihlaseni sekce-seda" style="max-width: 500px; margin: 40px auto;">
+    <h2 style="text-align: center; color: #0d47a1; font-size: 28px; margin-bottom: 14px;">Přihlášení</h2>
+
+    <form method="post" style="margin-top: 30px;">
+        <div style="margin-bottom: 20px;">
+            <label for="username" style="display: block; margin-bottom: 8px; font-weight: bold; color: #0d47a1;">Uživatelské jméno:</label>
+            <input type="text" id="username" name="username" required 
+                   style="width: 100%; padding: 12px; border: 2px solid #b2dfef; border-radius: 6px; font-size: 16px; box-sizing: border-box;" 
+                   placeholder="Zadejte vaše uživatelské jméno" />
+        </div>
+
+        <div style="margin-bottom: 30px;">
+            <label for="password" style="display: block; margin-bottom: 8px; font-weight: bold; color: #0d47a1;">Heslo:</label>
+            <input type="password" id="password" name="password" required 
+                   style="width: 100%; padding: 12px; border: 2px solid #b2dfef; border-radius: 6px; font-size: 16px; box-sizing: border-box;" 
+                   placeholder="Zadejte vaše heslo" />
+        </div>
+
+        <button type="submit" class="tlacitko-prihlaseni" 
+                style="width: 100%; padding: 14px; font-size: 18px; background-color: #1976d2; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; transition: background 0.2s, transform 0.15s;">
+            Přihlásit se
+        </button>
+    </form>
+
+    <hr style="margin: 30px 0; border-color: #b2dfef;" />
+
+    <p style="text-align: center; color: #666; font-size: 14px; margin-top: 15px;">
+        <a href="@Url.Action("Index", "Home")" style="color: #0d47a1; text-decoration: none;">← Zpět na domovskou stránku</a>
+    </p>
+</section>
+
+<style>
+    .tlacitko-prihlaseni:hover {
+        background-color: #1565c0;
+        transform: scale(1.02);
+    }
+
+    .sekce-prihlaseni {
+        padding: 40px;
+    }
+</style>
