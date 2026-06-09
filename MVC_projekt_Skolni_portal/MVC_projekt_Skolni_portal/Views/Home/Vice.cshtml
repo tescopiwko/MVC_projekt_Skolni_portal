@@ -1,0 +1,84 @@
+﻿@{
+    ViewData["Title"] = "Více o škole";
+    ViewData["NadpisClass"] = "velky-nadpis";
+}
+
+<div class="uvodni-banner">
+    <h1 class="uvodni-nadpis">Více o naší škole</h1>
+    <p class="uvodni-podnadpis">Poznámejte celý příběh SPŠ Trutnov</p>
+</div>
+
+<hr class="oddeleni-sekci" />
+
+<section class="sekce-o-skole sekce-seda">
+    <h2 class="nadpis-sekce"><span class="sekce-ikona">📚</span> Naše mise a vize</h2>
+    <p class="text-o-skole">
+        Střední průmyslová škola Trutnov se zaměřuje na vzdělávání talentované mládeže v technických a přírodovědných oborech. Naší misi je připravit studenty na úspěšnou kariéru a celoživotní učení se. Věříme, že kvalitní vzdělání je klíčem k osobnímu rozvoji a příspěvku do společnosti.
+    </p>
+</section>
+
+<section class="sekce-obory">
+    <h2 class="nadpis-sekce"><span class="sekce-ikona">🏆</span> Naše hodnoty</h2>
+    <ul class="seznam-oboru">
+        <li><strong>Excelence:</strong> Snažíme se dosahovat nejvyšších standardů v každém aspektu naší činnosti</li>
+        <li><strong>Inovace:</strong> Podporujeme kreativitu a nové myšlenky v učebně i mimo ni</li>
+        <li><strong>Inkluzivita:</strong> Vítáme studenty z různých prostředí a s různými schopnostmi</li>
+        <li><strong>Etika:</strong> Učíme odpovědné a etické chování ve všech situacích</li>
+        <li><strong>Spolupráce:</strong> Věříme na sílu týmové práce a vzájemné podpory</li>
+    </ul>
+</section>
+
+<hr class="oddeleni-sekci" />
+
+<section class="sekce-novinky sekce-seda">
+    <h2 class="nadpis-sekce"><span class="sekce-ikona">🎯</span> Studijní programy</h2>
+    <div class="novinky-karty">
+        <div class="karta-novinka">
+            <h3>Informační technologie</h3>
+            <p>Příprava na práci v IT sektoru. Studenti se učí programování, webový vývoj, správu sítí a bezpečnost dat.</p>
+        </div>
+        <div class="karta-novinka">
+            <h3>Strojírenství</h3>
+            <p>Zaměření na konstruování, výrobu a údržbu strojů. Praktická výuka v moderních dílnách s profesionálním vybavením.</p>
+        </div>
+        <div class="karta-novinka">
+            <h3>Elektrotechnika</h3>
+            <p>Výuka elektrickýsch instalací, automatizace a průmyslové elektroniky s důrazem na bezpečnost a normy.</p>
+        </div>
+        <div class="karta-novinka">
+            <h3>Technické lyceum</h3>
+            <p>Kombinace všeobecného vzdělání s technickou specializací. Přímo navazuje na studium na vysoké škole.</p>
+        </div>
+    </div>
+</section>
+
+<section class="sekce-fotogalerie">
+    <h2 class="nadpis-sekce"><span class="sekce-ikona">🔬</span> Naše vybavení</h2>
+    <p style="font-size: 18px; color: #222; line-height: 1.6; margin-bottom: 20px;">
+        Naše škola je vybavena nejmodernějším technickým vybavením:
+    </p>
+    <ul style="font-size: 18px; color: #1a237e; padding-left: 20px; margin-bottom: 20px;">
+        <li>Počítačové laboratoře s nejnovějším softwarem</li>
+        <li>Elektrotechnické dílny s profesionálním vybavením</li>
+        <li>Mechanické dílny s CNC stroji</li>
+        <li>Laboratoř robotiky a automatizace</li>
+        <li>Knihovna s bohatou sbírkou odborné literatury</li>
+        <li>Tělocvična a sportovní areál</li>
+    </ul>
+</section>
+
+<hr class="oddeleni-sekci" />
+
+<section class="sekce-kontakt">
+    <h2 class="nadpis-sekce"><span class="sekce-ikona">📧</span> Informace a přihlášení</h2>
+    <p style="font-size: 18px; color: #222; line-height: 1.6;">
+        Jste-li vědomí, že chcete studovat na SPŠ Trutnov, neváhejte se na nás obrátit. Rád vám poskytneme více informací o přijímacích zkouškách, stipendiích a dalších detailech.
+    </p>
+    <p class="kontakt-radek"><strong>Adresa:</strong> Horská 59, 541 01 Trutnov</p>
+    <p class="kontakt-radek"><strong>Email:</strong> info@sps-trutnov.cz</p>
+    <p class="kontakt-radek"><strong>Telefon:</strong> +420 499 840 111</p>
+    <p class="kontakt-radek" style="margin-top: 20px;"><strong>Webové stránky:</strong> www.sps-trutnov.cz</p>
+    <p style="text-align: center; margin-top: 30px;">
+        <a asp-controller="Home" asp-action="Index" style="color: #1976d2; text-decoration: none; font-weight: bold; font-size: 18px;">← Zpět na domovskou stránku</a>
+    </p>
+</section>
