@@ -25,7 +25,10 @@ namespace MVC_projekt_Skolni_portal.Controllers
         {
             return View();
         }
-
+        public IActionResult Stazeni()
+        {
+            return View();
+        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
