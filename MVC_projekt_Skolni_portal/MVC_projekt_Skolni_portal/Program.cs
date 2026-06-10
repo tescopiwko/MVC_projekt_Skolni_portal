@@ -1,3 +1,7 @@
+using Microsoft.EntityFrameworkCore;
+using MVC_projekt_Skolni_portal.Data;
+
+
 namespace MVC_projekt_Skolni_portal
 {
     public class Program
@@ -8,6 +12,8 @@ namespace MVC_projekt_Skolni_portal
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddDbContext<KontextDatabaze>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
             var app = builder.Build();
 

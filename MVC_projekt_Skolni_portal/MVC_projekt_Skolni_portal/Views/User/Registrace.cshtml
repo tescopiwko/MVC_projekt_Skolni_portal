@@ -24,14 +24,14 @@
             </div>
         </div>
 
-        <div style="display: flex; gap: 15px; margin-bottom: 20px;">
+        <div style="display: flex; gap: 15px; margin-bottom: 20px;"> <!--NAME= jmeno->
             <div style="flex: 1;">
                 <label for="jmeno" style="display: block; margin-bottom: 8px; font-weight: bold; color: #0d47a1;">Jméno:</label>
-                <input type="text" id="jmeno" name="jmeno" required
+                <input type="text" id="jmeno" name="jmeno" required 
                        style="width: 100%; padding: 12px; border: 2px solid #b2dfef; border-radius: 6px; font-size: 16px; box-sizing: border-box;"
                        placeholder="Např. Jan" />
             </div>
-            <div style="flex: 1;">
+            <div style="flex: 1;"> <!--name = prijmeni->
                 <label for="prijmeni" style="display: block; margin-bottom: 8px; font-weight: bold; color: #0d47a1;">Příjmení:</label>
                 <input type="text" id="prijmeni" name="prijmeni" required
                        style="width: 100%; padding: 12px; border: 2px solid #b2dfef; border-radius: 6px; font-size: 16px; box-sizing: border-box;"
@@ -39,21 +39,21 @@
             </div>
         </div>
 
-        <div style="margin-bottom: 20px;">
+        <div style="margin-bottom: 20px;"> <!--name = adresa->
             <label for="adresa" style="display: block; margin-bottom: 8px; font-weight: bold; color: #0d47a1;">Adresa:</label>
             <input type="text" id="adresa" name="adresa" required
                    style="width: 100%; padding: 12px; border: 2px solid #b2dfef; border-radius: 6px; font-size: 16px; box-sizing: border-box;"
                    placeholder="Např. Ulice 45, Město" />
         </div>
 
-        <div style="margin-bottom: 20px;">
+        <div style="margin-bottom: 20px;"> <!-- telefon->
             <label for="telefon" style="display: block; margin-bottom: 8px; font-weight: bold; color: #0d47a1;">Telefon:</label>
             <input type="tel" id="telefon" name="telefon" required
                    style="width: 100%; padding: 12px; border: 2px solid #b2dfef; border-radius: 6px; font-size: 16px; box-sizing: border-box;"
                    placeholder="Např. +420 123 456 789" />
         </div>
 
-        <div style="margin-bottom: 20px;">
+        <div style="margin-bottom: 20px;"> <!--- skolniEmail->
             <label for="skolniEmail" style="display: block; margin-bottom: 8px; font-weight: bold; color: #0d47a1;">Školní e-mail:</label>
             <input type="email" id="skolniEmail" name="skolniEmail" required
                    style="width: 100%; padding: 12px; border: 2px solid #b2dfef; border-radius: 6px; font-size: 16px; box-sizing: border-box;"
@@ -61,7 +61,7 @@
         </div>
 
         <div class="dynamic-panels">
-            <!-- Třída (pouze pro žáky) -->
+            <!-- Třída (pouze pro žáky) --> <!-- NAME = trida-->
             <div id="sekce-trida" class="dynamic-panel-zak" style="margin-bottom: 20px;">
                 <label for="trida" style="display: block; margin-bottom: 8px; font-weight: bold; color: #0d47a1;">Třída:</label>
                 <select id="trida" name="trida"
@@ -76,9 +76,15 @@
                     <option value="4.A">4.A</option>
                     <option value="4.B">4.B</option>
                 </select>
+                @if (ViewData["chybaTrida"] != null)
+                {
+                    <p style="color: red; font-size: 14px; font-weight: bold; margin-top: 5px;">
+                        @ViewData["chybaTrida"]
+                    </p>
+                }
             </div>
 
-            <!-- Předmět (pouze pro učitele) -->
+            <!-- Předmět (pouze pro učitele) --> <!-- name = predmet-->
             <div id="sekce-predmet" class="dynamic-panel-ucitel" style="margin-bottom: 20px;">
                 <label for="predmet" style="display: block; margin-bottom: 8px; font-weight: bold; color: #0d47a1;">Vyučovaný předmět:</label>
                 <select id="predmet" name="predmet"
@@ -96,30 +102,43 @@
                     <option value="Mechatronika">Mechatronika</option>
                     <option value="Operační systémy">Operační systémy</option>
                 </select>
+                @if (ViewData["chybaPredmet"] != null)
+                {
+                    <p style="color: red; font-size: 14px; font-weight: bold; margin-top: 5px;">
+                        @ViewData["chybaPredmet"]
+                    </p>
+                }
             </div>
         </div>
 
         <hr style="margin: 30px 0; border-color: #b2dfef;" />
 
-        <div style="margin-bottom: 20px;">
+        <div style="margin-bottom: 20px;"> <!-- name = username-->
             <label for="username" style="display: block; margin-bottom: 8px; font-weight: bold; color: #0d47a1;">Uživatelské jméno (Login):</label>
             <input type="text" id="username" name="username" required
                    style="width: 100%; padding: 12px; border: 2px solid #b2dfef; border-radius: 6px; font-size: 16px; box-sizing: border-box;"
                    placeholder="Zadejte uživatelské jméno" />
         </div>
 
-        <div style="display: flex; gap: 15px; margin-bottom: 30px;">
+        <div style="display: flex; gap: 15px; margin-bottom: 30px;"> <!-- name = password-->
             <div style="flex: 1;">
                 <label for="password" style="display: block; margin-bottom: 8px; font-weight: bold; color: #0d47a1;">Heslo:</label>
                 <input type="password" id="password" name="password" required
                        style="width: 100%; padding: 12px; border: 2px solid #b2dfef; border-radius: 6px; font-size: 16px; box-sizing: border-box;"
                        placeholder="Zadejte heslo" />
             </div>
-            <div style="flex: 1;">
+            <div style="flex: 1;"> <!-- name = confirmPassword-->
                 <label for="confirmPassword" style="display: block; margin-bottom: 8px; font-weight: bold; color: #0d47a1;">Potvrzení hesla:</label>
                 <input type="password" id="confirmPassword" name="confirmPassword" required
                        style="width: 100%; padding: 12px; border: 2px solid #b2dfef; border-radius: 6px; font-size: 16px; box-sizing: border-box;"
                        placeholder="Heslo znovu" />
+                       @if (ViewData["chybaHeslo"] != null)
+                       {
+                            <p style="color: red; font-size: 14px; font-weight: bold; margin-top: 5px;">
+                                @ViewData["chybaHeslo"]
+                            </p>
+                       }
+                    
             </div>
         </div>
 
