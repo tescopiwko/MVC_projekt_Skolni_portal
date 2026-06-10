@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MVC_projekt_Skolni_portal.Migrations
 {
     [DbContext(typeof(KontextDatabaze))]
-    [Migration("20260609093439_prvniTest")]
-    partial class prvniTest
+    [Migration("20260610142812_pridaniAppsettings")]
+    partial class pridaniAppsettings
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

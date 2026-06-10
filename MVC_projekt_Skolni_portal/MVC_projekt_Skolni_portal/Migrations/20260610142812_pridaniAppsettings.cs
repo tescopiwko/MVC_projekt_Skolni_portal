@@ -5,7 +5,7 @@
 namespace MVC_projekt_Skolni_portal.Migrations
 {
     /// <inheritdoc />
-    public partial class prvniTest : Migration
+    public partial class pridaniAppsettings : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

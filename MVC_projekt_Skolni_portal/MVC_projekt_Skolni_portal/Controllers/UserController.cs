@@ -1,12 +1,18 @@
-using AspNetCoreGeneratedDocument;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using MVC_projekt_Skolni_portal.Data;
+using MVC_projekt_Skolni_portal.Models;
 
 
 namespace MVC_projekt_Skolni_portal.Controllers
 {
     public class UserController : Controller
     {
+        private readonly KontextDatabaze _staff_info;
+
+        public UserController(KontextDatabaze staff_info)
+        {
+            _staff_info = staff_info;
+        }
 
 
         public IActionResult Prihlaseni()
@@ -57,15 +63,24 @@ namespace MVC_projekt_Skolni_portal.Controllers
             }
             else
             {
-                if (role == "zak")
+                User novyUzivatel = new User()
                 {
+                    Role = role,
+                    Username = username,
+                    Password = password,
+                    Jmeno = jmeno,
+                    Prijmeni = prijmeni,
+                    Adresa = adresa,
+                    Telefon = telefon,
+                    SkolniEmail = skolniEmail,
 
-                }
+                    Trida = role == "zak" ? trida : null,
+                    Predmet = role == "ucitel" ? predmet : null
+                };
 
-                else if (role == "ucitel")
-                {
+                _staff_info.Users.Add(novyUzivatel);
+                _staff_info.SaveChanges();
 
-                }
 
                 return Redirect("/User/Prihlaseni");
             }
