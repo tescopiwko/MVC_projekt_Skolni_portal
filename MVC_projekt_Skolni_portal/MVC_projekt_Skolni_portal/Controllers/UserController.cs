@@ -14,24 +14,6 @@ namespace MVC_projekt_Skolni_portal.Controllers
             _staff_info = staff_info;
         }
 
-
-        public IActionResult Prihlaseni()
-        { 
-            return View();
-        }
-
-
-        public IActionResult UcitelProfil()
-        {
-            return View();
-        }
-
-
-        public IActionResult ZakProfil()
-        {
-            return View();
-        }
-
         [HttpGet]
         public IActionResult Registrace()
         {
@@ -61,32 +43,79 @@ namespace MVC_projekt_Skolni_portal.Controllers
                 ViewData["chybaHeslo"] = "Hesla se neshodují.";
                 return View();
             }
-            else
+
+            
+            User novyUzivatel = new User()
             {
-                User novyUzivatel = new User()
-                {
-                    Role = role,
-                    Username = username,
-                    Password = password,
-                    Jmeno = jmeno,
-                    Prijmeni = prijmeni,
-                    Adresa = adresa,
-                    Telefon = telefon,
-                    SkolniEmail = skolniEmail,
+                Role = role,
+                Username = username,
+                Password = password,
+                Jmeno = jmeno,
+                Prijmeni = prijmeni,
+                Adresa = adresa,
+                Telefon = telefon,
+                SkolniEmail = skolniEmail,
 
-                    Trida = role == "zak" ? trida : null,
-                    Predmet = role == "ucitel" ? predmet : null
-                };
+                Trida = role == "zak" ? trida : null,
+                Predmet = role == "ucitel" ? predmet : null
+            };
 
-                _staff_info.Users.Add(novyUzivatel);
-                _staff_info.SaveChanges();
+            _staff_info.Users.Add(novyUzivatel);
+            _staff_info.SaveChanges();
 
 
-                return Redirect("/User/Prihlaseni");
+            return Redirect("/User/Prihlaseni");     
+
+        }
+
+        [HttpGet]
+        public IActionResult Prihlaseni()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Prihlaseni(string username,
+            string password)
+        {
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            {
+                ViewData["chyba"] = "Jméno nebo heslo není zadáno.";
+
+                return View();
             }
-                       
-                    
 
+            User? prihlasenyUzivatel = _staff_info
+                .Users
+                .Where(u => u.Username == username)
+                .FirstOrDefault();
+
+            if (prihlasenyUzivatel == null)
+            {
+                ViewData["chyba"] = "Neznámý uživatel.";
+
+                return View();
+            }
+
+            if (prihlasenyUzivatel.Password != password)
+            {
+                ViewData["chyba"] = "Nesprávné heslo.";
+                return View();
+            }
+
+            return Redirect("/User/" + (prihlasenyUzivatel.Role == "ucitel" ? "UcitelProfil" : "ZakProfil"));
+
+        }
+
+        public IActionResult UcitelProfil()
+        {
+            return View();
+        }
+
+
+        public IActionResult ZakProfil()
+        {
+            return View();
         }
     }
 }

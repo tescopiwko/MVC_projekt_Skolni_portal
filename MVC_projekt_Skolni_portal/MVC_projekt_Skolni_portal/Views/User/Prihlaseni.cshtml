@@ -18,6 +18,12 @@
                    style="width: 100%; padding: 12px; border: 2px solid #b2dfef; border-radius: 6px; font-size: 16px; box-sizing: border-box;" 
                    placeholder="Zadejte vaše uživatelské jméno" />
         </div>
+        @{
+            if (!string.IsNullOrEmpty(ViewData["chyba"]?.ToString()))
+            {
+                <span class="chyba">@ViewData["chyba"]</span>
+            }
+        }
 
         <div style="margin-bottom: 30px;">
             <label for="password" style="display: block; margin-bottom: 8px; font-weight: bold; color: #0d47a1;">Heslo:</label>
