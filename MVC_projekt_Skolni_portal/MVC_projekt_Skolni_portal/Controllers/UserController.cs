@@ -158,6 +158,14 @@ namespace MVC_projekt_Skolni_portal.Controllers
             
             return View(prihlasenyUzivatel);
         }
+
+        public IActionResult Odhlaseni()
+        {
+            HttpContext.Session.Clear();
+            Response.Cookies.Delete(".AspNetCore.Session");
+
+            return Redirect("/Home/Index");
+        }
     }
 }
 
