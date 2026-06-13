@@ -102,6 +102,7 @@ namespace MVC_projekt_Skolni_portal.Controllers
                 ViewData["chyba"] = "Nesprávné heslo.";
                 return View();
             }
+            HttpContext.Session.SetString("prihlaseny", username);
 
             return Redirect("/User/" + (prihlasenyUzivatel.Role == "ucitel" ? "UcitelProfil" : "ZakProfil"));
 
@@ -109,13 +110,53 @@ namespace MVC_projekt_Skolni_portal.Controllers
 
         public IActionResult UcitelProfil()
         {
-            return View();
+            string? prihlaseny = HttpContext.Session.GetString("prihlaseny");
+
+            if (prihlaseny == null)
+            {
+                return Redirect("/User/Prihlaseni"); 
+            }
+
+            
+            User prihlasenyUzivatel = _staff_info.Users
+                .Where(u => u.Username == prihlaseny)
+                .FirstOrDefault();
+
+            // 3. Bezpeènostní pojistka: Co když žák ruènì pøepsal URL adresu v prohlížeèi na /User/UcitelProfil?
+            // Musíme ovìøit, že ten, kdo je v Session, je opravdu uèitel.
+            if (prihlasenyUzivatel == null || prihlasenyUzivatel.Role != "ucitel")
+            {
+                return Redirect("/User/Prihlaseni");
+            }
+
+            
+            return View(prihlasenyUzivatel);
         }
 
 
         public IActionResult ZakProfil()
         {
-            return View();
+            
+            string? prihlaseny = HttpContext.Session.GetString("prihlaseny");
+
+            if (prihlaseny == null)
+            {
+                return Redirect("/User/Prihlaseni");
+            }
+
+            
+            User prihlasenyUzivatel = _staff_info.Users
+                .Where(u => u.Username == prihlaseny)
+                .FirstOrDefault();
+
+            // 3. Pojistka: Pokud by se sem pokusil vlézt uèitel pøes URL, vyhodíme ho
+            if (prihlasenyUzivatel == null || prihlasenyUzivatel.Role != "zak")
+            {
+                return Redirect("/User/Prihlaseni");
+            }
+
+            
+            return View(prihlasenyUzivatel);
         }
     }
 }

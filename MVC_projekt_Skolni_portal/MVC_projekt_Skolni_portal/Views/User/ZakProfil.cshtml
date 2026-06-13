@@ -1,4 +1,5 @@
-﻿@{
+﻿@model MVC_projekt_Skolni_portal.Models.User;
+@{
     ViewData["Title"] = "Profil žáka";
     ViewData["NadpisClass"] = "velky-nadpis";
 }
@@ -11,11 +12,11 @@
                     <img src="~/obrazky/guest.png" alt="Avatar" />
                 </div>
                 <div class="profil-info">
-                    <h2>Jméno Příjmení</h2>
-                    <p class="radek-udaje"><strong>Třída:</strong> 2.A (temp)</p>
-                    <p class="radek-udaje"><strong>Adresa:</strong> Ulice 45, Město</p>
-                    <p class="radek-udaje"><strong>Školní e-mail:</strong> zak@skola.cz</p>
-                    <p class="radek-udaje"><strong>Telefon:</strong> +420 777 888 999</p>
+                    <h2>@Model.Jmeno @Model.Prijmeni</h2>
+                    <p class="radek-udaje"><strong>Třída:</strong>@Model.Trida</p>
+                    <p class="radek-udaje"><strong>Adresa:</strong>@Model.Adresa</p>
+                    <p class="radek-udaje"><strong>Školní e-mail:</strong>@Model.SkolniEmail</p>
+                    <p class="radek-udaje"><strong>Telefon:</strong>@Model.Telefon</p>
                 </div>
             </div>
         </div>
