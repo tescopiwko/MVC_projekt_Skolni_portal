@@ -15,6 +15,9 @@ namespace MVC_projekt_Skolni_portal
             builder.Services.AddDbContext<KontextDatabaze>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+            builder.Services.AddDbContext<KontextDatabaze>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("ZnamkyConnection")));
+
 
             builder.Services.AddDistributedMemoryCache();
             builder.Services.AddSession(options =>

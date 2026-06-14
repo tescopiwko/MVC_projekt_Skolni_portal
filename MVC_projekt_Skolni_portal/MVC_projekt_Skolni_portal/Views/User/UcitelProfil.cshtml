@@ -27,8 +27,8 @@
 
             <!-- Sekce s CSS-only přepínačem (výchozí: Rozvrh) -->
         <section class="teacher-tabs-section teacher-profile-tabs">
-            <input class="teacher-tab-toggle" type="radio" id="tab-rozvrh" name="profil-tabs" checked />
-            <input class="teacher-tab-toggle" type="radio" id="tab-tridy-znamky" name="profil-tabs" />
+            <input class="teacher-tab-toggle" type="radio" id="tab-rozvrh" name="profil-tabs" checked="@(ViewData["AktivniZalozka"]?.ToString() == "profil")" />
+            <input class="teacher-tab-toggle" type="radio" id="tab-tridy-znamky" name="profil-tabs" checked="@(ViewData["AktivniZalozka"]?.ToString() == "znamky")" />
 
             <div class="teacher-tab-buttons">
                 <label for="tab-rozvrh"       class="teacher-tab-button">Rozvrh</label>
@@ -54,9 +54,9 @@
                         <tbody>
                             <tr>
                                 <td>Pondělí</td>
-                                <td contenteditable="true">Matematika</td>
-                                <td contenteditable="true">Matematika</td>
-                                <td contenteditable="true">Matematika</td>
+                                <td contenteditable="true">@Model.Predmet</td>
+                                <td contenteditable="true">@Model.Predmet</td>
+                                <td contenteditable="true">@Model.Predmet</td>
                                 <td contenteditable="true">-</td>
                                 <td contenteditable="true">-</td>
                                 <td contenteditable="true">-</td>
@@ -64,19 +64,19 @@
                             </tr>
                             <tr>
                                 <td>Úterý</td>
-                                <td contenteditable="true">Matematika</td>
-                                <td contenteditable="true">Matematika</td>
+                                <td contenteditable="true">@Model.Predmet</td>
+                                <td contenteditable="true">@Model.Predmet</td>
                                 <td contenteditable="true">-</td>
-                                <td contenteditable="true">Matematika</td>
+                                <td contenteditable="true">@Model.Predmet</td>
                                 <td contenteditable="true">-</td>
                                 <td contenteditable="true">-</td>
                                 <td contenteditable="true">-</td>
                             </tr>
                             <tr>
                                 <td>Středa</td>
-                                <td contenteditable="true">Matematika</td>
+                                <td contenteditable="true">@Model.Predmet</td>
                                 <td contenteditable="true">-</td>
-                                <td contenteditable="true">Matematika</td>
+                                <td contenteditable="true">@Model.Predmet</td>
                                 <td contenteditable="true">-</td>
                                 <td contenteditable="true">-</td>
                                 <td contenteditable="true">-</td>
@@ -84,19 +84,19 @@
                             </tr>
                             <tr>
                                 <td>Čtvrtek</td>
-                                <td contenteditable="true">Matematika</td>
-                                <td contenteditable="true">Matematika</td>
-                                <td contenteditable="true">Matematika</td>
-                                <td contenteditable="true">Matematika</td>
+                                <td contenteditable="true">@Model.Predmet</td>
+                                <td contenteditable="true">@Model.Predmet</td>
+                                <td contenteditable="true">@Model.Predmet</td>
+                                <td contenteditable="true">@Model.Predmet</td>
                                 <td contenteditable="true">-</td>
                                 <td contenteditable="true">-</td>
-                                <td contenteditable="true">Matematika</td>
+                                <td contenteditable="true">@Model.Predmet</td>
                             </tr>
                             <tr>
                                 <td>Pátek</td>
-                                <td contenteditable="true">Matematika</td>
+                                <td contenteditable="true">@Model.Predmet</td>
                                 <td contenteditable="true">-</td>
-                                <td contenteditable="true">Matematika</td>
+                                <td contenteditable="true">@Model.Predmet</td>
                                 <td contenteditable="true">-</td>
                                 <td contenteditable="true">-</td>
                                 <td contenteditable="true">-</td>
@@ -106,81 +106,94 @@
                     </table>
                 </section>
 
-                <section class="teacher-grades-panel">
+                <section id="hodnoceni-sekce" class="teacher-grades-panel">
                     <h3 class="nadpis-sekce">Hodnocení studentů</h3>
-                    <form class="teacher-grades-form" method="post" action="#">
-                        <div class="dropdown-row">
-                            <div class="form-group">
-                                <label for="tridaSelect">Třída</label>
-                                <select id="tridaSelect" name="trida" class="form-select">
-                                    <option>1.A</option>
-                                    <option>1.B</option>
-                                    <option>2.A</option>
-                                    <option>2.B</option>
-                                    <option>3.A</option>
-                                    <option>3.B</option>
-                                    <option>4.A</option>
-                                    <option>4.B</option>
-                                    <option>5.A</option>
-                                    <option>5.B</option>
-                                </select>
-                            </div>
 
-                            <div class="form-group">
-                                <label for="zakSelect">Žák</label>
-                                <select id="zakSelect" name="zak" class="form-select">
-                                    <option>Jan Novák</option>
-                                    <option>Petra Svobodová</option>
-                                    <option>Tomáš Dvořák</option>
-                                    <option>Eva Malá</option>
-                                    <option>Martin Horák</option>
-                                    <option>Jana Králová</option>
-                                    <option>Petr Novotný</option>
-                                    <option>Lucie Bílá</option>
-                                    <option>Filip Veselý</option>
-                                    <option>Anna Černá</option>
-                                </select>
-                            </div>
+                    <form method="get" action="/User/UcitelProfil#hodnoceni-sekce" style="margin-bottom: 20px; background: #eef2f3; padding: 15px; border-radius: 5px;">
+                        <input type="hidden" name="aktivniZalozka" value="znamky" />
 
-                            <div class="form-group">
-                                <label for="znamkaSelect">Známka</label>
-                                <select id="znamkaSelect" name="znamka" class="form-select">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
-                            </div>
+                        <div class="form-group" style="display: flex; flex-direction: column; gap: 10px;">
+                            <label for="tridaSelect">1. KROK: Vyberte třídu pro zobrazení žáků</label>
 
-                            <div class="form-group">
-                                <label for="vahaSelect">Váha</label>
-                                <select id="vahaSelect" name="vaha" class="form-select">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                    <option>6</option>
-                                    <option>7</option>
-                                    <option>8</option>
-                                    <option>9</option>
-                                    <option>10</option>
-                                </select>
+                            <select id="tridaSelect" name="vybranaTrida" class="form-select">
+                                <option value="">-- Vyberte třídu --</option>
+                                <option value="1.EPS" selected="@(ViewData["ZvolenaTrida"]?.ToString() == "1.EPS")">1.EPS</option>
+                                <option value="2.EPS" selected="@(ViewData["ZvolenaTrida"]?.ToString() == "2.EPS")">2.EPS</option>
+                                <option value="3.EPS" selected="@(ViewData["ZvolenaTrida"]?.ToString() == "3.EPS")">3.EPS</option>
+                                <option value="4.EPS" selected="@(ViewData["ZvolenaTrida"]?.ToString() == "4.EPS")">4.EPS</option>
+                                <option value="1.IT" selected="@(ViewData["ZvolenaTrida"]?.ToString() == "1.IT")">1.IT</option>
+                                <option value="2.IT" selected="@(ViewData["ZvolenaTrida"]?.ToString() == "2.IT")">2.IT</option>
+                                <option value="3.IT" selected="@(ViewData["ZvolenaTrida"]?.ToString() == "3.IT")">3.IT</option>
+                                <option value="4.IT" selected="@(ViewData["ZvolenaTrida"]?.ToString() == "4.IT")">4.IT</option>
+                            </select>
+
+                            <button type="submit" class="profil-tlacitko" style="background-color: #0d47a1; color: white; padding: 8px 12px; border: none; border-radius: 4px; cursor: pointer; align-self: flex-start;">
+                                Načíst žáky
+                            </button>
+                        </div>
+                    </form>
+
+                    @if (ViewData["ZvolenaTrida"] != null && !string.IsNullOrEmpty(ViewData["ZvolenaTrida"].ToString()))
+                    {
+                        <form class="teacher-grades-form" method="post" action="/User/ZapisZnamku">
+                            <input type="hidden" name="ClassName" value="@ViewData["ZvolenaTrida"]" />
+
+                            <p><strong>Zapisujete známky pro třídu: @ViewData["ZvolenaTrida"]</strong></p>
+
+                            <div class="dropdown-row">
+                                <div class="form-group">
+                                    <label for="zakSelect">Žák</label>
+                                    <select id="zakSelect" name="StudentName" class="form-select" required>
+                                        <option value="">-- Vyberte žáka --</option>
+                                        @foreach (var zak in ViewBag.Zaci)
+                                        {
+                                            <option value="@zak.Jmeno @zak.Prijmeni">@zak.Jmeno @zak.Prijmeni</option>
+                                        }
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="znamkaSelect">Známka</label>
+                                    <select id="znamkaSelect" name="Value" class="form-select">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="vahaSelect">Váha</label>
+                                    <select id="vahaSelect" name="Weight" class="form-select">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                    </select>
                                 </div>
                             </div>
 
                             <div class="form-group" style="margin-top: 12px; width: 100%; display: flex; flex-direction: column; gap: 6px;">
                                 <label for="typHodnoceni">Typ hodnocení</label>
-                                <input type="text" id="typHodnoceni" name="typHodnoceni" class="form-input" placeholder="tema pisemky" style="width: 100%; box-sizing: border-box;" />
+                                <input type="text" id="typHodnoceni" name="Description" class="form-input" placeholder="tema pisemky" style="width: 100%; box-sizing: border-box;" />
                             </div>
 
                             <div class="form-actions">
                                 <button type="submit" class="profil-tlacitko primarni">Uložit hodnocení</button>
                             </div>
-                    </form>
+                        </form>
+                    }
+                    else
+                    {
+                        <p style="color: #666; font-style: italic;">Pro zadání známek nejprve vyberte třídu nahoře a klikněte na Načíst žáky.</p>
+                    }
                 </section>
-            </div>
-        </section>
     </div>
 </div>

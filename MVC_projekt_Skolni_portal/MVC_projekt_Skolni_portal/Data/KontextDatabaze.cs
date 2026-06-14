@@ -11,6 +11,8 @@ namespace MVC_projekt_Skolni_portal.Data
         }
 
         public DbSet<User> Users { get; set; }
+
+        public DbSet<Grade> Grades { get; set; }
     }
     
     
