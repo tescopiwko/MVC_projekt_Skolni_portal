@@ -203,7 +203,18 @@ namespace MVC_projekt_Skolni_portal.Controllers
                 return Redirect("/User/Prihlaseni");
             }
 
-            
+            string celeJmenoZaka = $"{prihlasenyUzivatel.Jmeno} {prihlasenyUzivatel.Prijmeni}";
+
+            // Vytáhneme známky z databáze Grades pro tohoto žáka
+            var posledniZnamky = _staff_info.Grades
+                .Where(g => g.StudentName == celeJmenoZaka)
+                .OrderByDescending(g => g.Id) // Seřadíme od nejnovější (předpokládám, že Id automaticky roste, případně seřaď podle datumu)
+                .Take(10)                     // Vezmeme maximálně 10 nejnovějších známek
+                .ToList();
+
+            // Uložíme známky do ViewBag, aby k nim mělo přístup HTML žáka
+            ViewBag.PosledniZnamky = posledniZnamky;
+
             return View(prihlasenyUzivatel);
         }
 

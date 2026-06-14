@@ -24,7 +24,6 @@
             </div>
         </div>
 
-        <!-- jednoduché záložky bez JavaScriptu -->
         <section class="teacher-tabs-section teacher-profile-tabs">
             <input class="teacher-tab-toggle" type="radio" id="tab-rozvrh" name="profil-tabs" checked />
             <input class="teacher-tab-toggle" type="radio" id="tab-tridy-znamky" name="profil-tabs" />
@@ -61,28 +60,52 @@
                 </section>
 
                 <section class="teacher-grades-panel">
-                    <h3 class="nadpis-sekce">Známky</h3>
-                    <table class="schedule-table">
-                        <thead>
-                            <tr>
-                                <th>Předmět</th>
-                                <th>Známka</th>
-                                <th>Typ hodnocení</th>
-                                <th>Datum</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>Matematika</td><td><strong>2</strong></td><td>Pololetní test</td><td>12. 03. 2026</td></tr>
-                            <tr><td>Vývoj softwaru</td><td><strong>1</strong></td><td>Samostatný projekt</td><td>02. 04. 2026</td></tr>
-                            <tr><td>Počítačové sítě</td><td><strong>1</strong></td><td>Ústní zkoušení</td><td>15. 04. 2026</td></tr>
-                            <tr><td>Anglický jazyk</td><td><strong>3</strong></td><td>Test ze slovíček</td><td>20. 04. 2026</td></tr>
-                            <tr><td>Český jazyk</td><td><strong>2</strong></td><td>Slohová práce</td><td>22. 04. 2026</td></tr>
-                            <tr><td>Fyzika</td><td><strong>1</strong></td><td>Laboratorní práce</td><td>25. 04. 2026</td></tr>
-                        </tbody>
-                    </table>
+                    <h3 class="nadpis-sekce">Znamky</h3>
+
+                    @* KONTROLA: Máme v ViewBag nějaké známky? *@
+                    @if (ViewBag.PosledniZnamky != null && ((List<MVC_projekt_Skolni_portal.Models.Grade>)ViewBag.PosledniZnamky).Count > 0)
+                    {
+                        <table class="schedule-table">
+                            <thead>
+                                <tr>
+                                    <th>Typ hodnocení (Popis)</th>
+                                    <th style="text-align: center;">Známka</th>
+                                    <th style="text-align: center;">Váha</th>                                  
+                                    <th>Datum</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @* CYKLUS: Projdeme všechny načtené známky z C# *@
+                                @foreach (var znamka in (List<MVC_projekt_Skolni_portal.Models.Grade>)ViewBag.PosledniZnamky)
+                                {
+                                    <tr>
+                                        @* 1. Sloupec: Popis / téma písemky (Description) *@
+                                        <td>
+                                            @(string.IsNullOrEmpty(znamka.Description) ? "Bez popisu" : znamka.Description)
+                                        </td>
+
+                                        @* 2. Sloupec: Hodnota známky (Value) *@
+                                        <td style="text-align: center;">
+                                            <strong style="font-size: 1.1em; color: #0d47a1;">@znamka.Value</strong>
+                                        </td>
+
+                                        @* 3. Sloupec: Váha známky (Weight) *@
+                                        <td style="text-align: center; color: #666; font-weight: bold;">@znamka.Weight</td>
+
+                                        @* 4. Sloupec: Datum zápisu (DateCreated). Zformátujeme ho pro pěkné čtení *@
+                                        <td style="text-align: center;">@znamka.DateCreated.ToString("dd. MM. yyyy")</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                    else
+                    {
+                        @* Zobrazí se pouze, pokud žák ještě v DB žádnou známku nemá *@
+                        <p style="color: #666; font-style: italic; padding: 15px;">Zatím nemáš zapsané žádné známky.</p>
+                    }
                 </section>
             </div>
         </section>
     </div>
 </div>
-
