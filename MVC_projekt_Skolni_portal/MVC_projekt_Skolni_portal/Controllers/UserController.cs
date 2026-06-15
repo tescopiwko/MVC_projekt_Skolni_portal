@@ -118,7 +118,7 @@ namespace MVC_projekt_Skolni_portal.Controllers
             }
 
             
-            User prihlasenyUzivatel = _staff_info.Users
+            User? prihlasenyUzivatel = _staff_info.Users
                 .Where(u => u.Username == prihlaseny)
                 .FirstOrDefault();
 
@@ -193,7 +193,7 @@ namespace MVC_projekt_Skolni_portal.Controllers
             }
 
             
-            User prihlasenyUzivatel = _staff_info.Users
+            User? prihlasenyUzivatel = _staff_info.Users
                 .Where(u => u.Username == prihlaseny)
                 .FirstOrDefault();
 
