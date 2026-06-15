@@ -17,7 +17,7 @@ services:
   web:
     build:
       context: .
-      dockerfile: mvc_projekt_skolni_portal/Dockerfile
+      dockerfile: MVC_projekt_Skolni_portal/Dockerfile
     image: mvc_projekt_skolni_portal
     ports:
         - "3000:8080"
@@ -29,6 +29,7 @@ services:
         Server=db;Database=SkolniPortalZnamkyDb;
         User=sa;Password=TotoJe100%SilnéHeslo!;
         TrustServerCertificate=True
+
 
 volumes:
   sqldata:

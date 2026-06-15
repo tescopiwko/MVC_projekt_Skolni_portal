@@ -15,9 +15,6 @@ namespace MVC_projekt_Skolni_portal
             builder.Services.AddDbContext<KontextDatabaze>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-            builder.Services.AddDbContext<KontextDatabaze>(options =>
-                options.UseSqlServer(builder.Configuration.GetConnectionString("ZnamkyConnection")));
-
 
             builder.Services.AddDistributedMemoryCache();
             builder.Services.AddSession(options =>
@@ -29,6 +26,12 @@ namespace MVC_projekt_Skolni_portal
 
             var app = builder.Build();
 
+            using (var scope = app.Services.CreateScope())
+            {
+                var db = scope.ServiceProvider.GetRequiredService<KontextDatabaze>();
+                db.Database.Migrate();
+            }
+
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
             {
@@ -39,6 +42,7 @@ namespace MVC_projekt_Skolni_portal
 
 
             app.UseHttpsRedirection();
+            app.UseStaticFiles();
             app.UseRouting();
 
             app.UseSession();
